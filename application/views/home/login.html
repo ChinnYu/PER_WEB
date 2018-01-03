@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>login</title>
+  <!-- Bootstrap core CSS-->
+  <link href="./resource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="./resource/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="./resource/css/sb-admin.css" rel="stylesheet">
+  <link href="./resource/css/LK.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+	<div class="container">
+		<div class="card card-login mx-auto mt-5">
+			<div class="card-header">Login</div>
+			<div class="card-body">
+				<?php echo validation_errors();?>
+				<form accept-charset="UTF-8" role="form" id='userform' method="POST"action="./checkinfo">
+					<div class="form-login">
+						<h4>Welcome back</h4>
+						<label >E-mail</label>
+						<input type="text" name="account" id="account" class="form-control input-sm chat-input" placeholder="E-mail" value="" />
+						</br>
+						<label >password</label>
+						<input type="password" name="pwd" id="pwd" class="form-control input-sm chat-input" placeholder="password" value=""/>
+						</br>
+						<label >驗證碼</label>
+						<?=$cap?>
+						<input type="text" name="cap"id="cap" class="form-control input-sm chat-input" placeholder="cap" value=""/>
+						</br>
+						<input class="btn btn-lg btn-success btn-block" type="submit" value="Enter" id="sub">
+					</div>
+				</form>
+			<!-- <div class="text-center">
+			  <a class="d-block small mt-3" href="register.html">Register an Account</a>
+			  <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+			</div> -->
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JavaScript-->
+	<script src="./resource/vendor/jquery/jquery.min.js"></script>
+	<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="./resource/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="./resource/js/md5.min.js"></script>
+	<script src="./resource/js/base64.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $("#userform").submit(function(e){
+			var a=document.getElementById('account').value;
+			var p=md5(document.getElementById('pwd').value);
+			var c=document.getElementById('cap').value;
+			p=p+a;
+			//alert('1.ori'+p);
+			p=md5(p);
+			//alert('1.'+p);
+			p=p+c;
+			//alert('md5(p+a)'+p);
+			p=md5(p);
+			//alert('2.'+p);
+			p=md5(p);
+			//alert('3.'+p);
+			var g=md5(a);
+			document.getElementById('account').value=g;
+			document.getElementById('pwd').value=p;
+			//alert(p);
+		  });
+		});
+		
+	</script>
+</body>
+
+</html>

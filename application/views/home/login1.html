@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>login</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./resource/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+     <link href="./resource/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+	<link href="./resource/css/LK.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="./resource/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body >
+	
+
+<div class="container">
+    <div class="row">
+		<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Login</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form" id='userform' method="POST"action="./checkinfo">
+						<div class="form-login">
+							<h4>Welcome back</h4>
+							<label >E-mail</label>
+							<input type="text" name="account" id="account" class="form-control input-sm chat-input" placeholder="E-mail" value="" />
+							</br>
+							<label >password</label>
+							<input type="text" name="pwd" id="pwd" class="form-control input-sm chat-input" placeholder="password" value=""/>
+							</br>
+							<label >驗證碼</label>
+							<?=$cap?>
+							<input type="text" id="cap" class="form-control input-sm chat-input" placeholder="cap" value=""/>
+							</br>
+							<input class="btn btn-lg btn-success btn-block" type="submit" value="Enter" id="sub">
+						</div>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <!-- jQuery -->
+    <script src="./resource/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./resource/js/bootstrap.min.js"></script>
+	<script src="./resource/js/md5.min.js"></script>
+	<script src="./resource/js/base64.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $("#userform").submit(function(e){
+			var a=document.getElementById('account').value;
+			var p=md5(document.getElementById('pwd').value);
+			var c=document.getElementById('cap').value;
+			p=p+a;
+			//alert('1.ori'+p);
+			p=md5(p);
+			//alert('1.'+p);
+			p=p+c;
+			//alert('md5(p+a)'+p);
+			p=md5(p);
+			//alert('2.'+p);
+			p=md5(p);
+			//alert('3.'+p);
+			var g=md5(a);
+			document.getElementById('account').value=g;
+			document.getElementById('pwd').value=p;
+			//alert(p);
+		  });
+		});
+		
+	</script>
+</body>
+
+</html>
