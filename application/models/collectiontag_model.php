@@ -62,5 +62,12 @@
 			}
 		}
 		
+		public function addNewUsertag($data){
+			$bool=$this->db->insert('collectiontag',$data);
+			return $bool;
+			
+		}
+		
+		
 	}
 	

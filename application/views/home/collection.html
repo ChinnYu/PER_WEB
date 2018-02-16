@@ -14,6 +14,7 @@
   <link href="./resource/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="./resource/css/sb-admin.css" rel="stylesheet">
+  <script src="./resource/ckeditor/ckeditor.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -158,20 +159,26 @@
 											<input type="hidden"  id="topicname" value="no"/>
 											<div class="form-group" style="margin-top:15px;" id="addtopic">
 												<label>新增主題 :</label>
-												<textarea class="form-control"  id="collection_tag_new"></textarea>
+												<textarea class="form-control"  id="collection_tag_new" name="collection_tag_new"></textarea>
 											</div>
 											<div class="form-group" style="margin-top:15px;">
 												<label>名稱 :</label>
-												<textarea class="form-control"  id="collection_name"></textarea>
+												<textarea class="form-control"  rows="5" id="collection_name" name="collection_name"></textarea>
 											</div>
 											<div class="form-group" style="margin-top:15px;">
 												<label>輸入要記錄的資料 :</label>
-												<textarea class="form-control" rows="3"  id="collection_content"></textarea>
+												<textarea class="form-control" rows="3"  id="collection_content" name="collection_content"></textarea>
 											</div>
 										</div>
 										<button type="submit" class="btn btn-info" style="float:right;">加入</button>
 									</form>
 								</div>
+								<!-- <div class="col-lg-6"> -->
+									<!-- <form name = 'form' action = '#' method='post'> -->
+										<!-- <textarea name="content" id="content" rows="10" cols="80"></textarea> -->
+										<!-- <input type = 'button' value = '送出' onclick = 'processData()'> -->
+									<!-- </form>	 -->
+								<!-- </div> -->
 							</div>
 						</div>
 					</div>
@@ -201,10 +208,10 @@
 					<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-body">確定登出了嗎!!! 不在留一下嗎~</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="./logout">Logout</a>
 				</div>
 			</div>
 		  </div>
@@ -218,6 +225,16 @@
 		<script src="./resource/js/sb-admin.min.js"></script>
 	</div>
 	<script type="text/JavaScript">
+		//CKEDITOR.replace( 'content', {});
+		//CKEDITOR.replace( 'collection_name', {height: 50});
+		CKEDITOR.replace( 'collection_content', {});
+		//CKEDITOR.replace( 'collection_tag_new', {height: 50});
+		function processData(){
+		   // getting data
+		   var data = CKEDITOR.instances.content.getData();
+		   alert(data);
+		}
+		
 		var b;
 		$.ajax({
 			type : "POST",
@@ -261,9 +278,11 @@
 		var jj;
 		$(document).ready(function(){
 			$('#postdata').submit(function(e){
-
+				
 				e.preventDefault();
-				$.ajax({
+				//alert('123');
+				if(document.getElementById("collection_name").value!=""&&CKEDITOR.instances['collection_content'].getData()!=""){
+					$.ajax({
 					type : "POST",
 					url : "collection/storecollection",
 					dataType : "json",
@@ -271,17 +290,32 @@
 						topicflag : $("#topicbox").val(),
 						topicname :	document.getElementById("topicname").value,
 						collection_name :	document.getElementById("collection_name").value,
-						collection_content : document.getElementById("collection_content").value,
+						collection_content : CKEDITOR.instances['collection_content'].getData(),
 						collection_tag_new : document.getElementById("collection_tag_new").value,
 					},
 					success : function(res){
-						alert(res);
+						if(res==true){
+							alert('成功加入!!');
+						}
+						document.getElementById("collection_name").value='';
+						document.getElementById("collection_content").value='';
+						document.getElementById("collection_tag_new").value='';
+						CKEDITOR.instances['collection_content'].setData("");//清空textarea
 						return renew();
 					},
 					error : function(jqXHR){
 						alert("發生錯誤 : "+jqXHR.status);
 					}
 				});
+				}else{
+					alert('請填完欄位喔!!');
+				}
+				
+				//var value1 = CKEDITOR.instances['collection_content'].editable().getText();
+				//var value1 = CKEDITOR.instances['collection_content'].getData();
+				//alert(value1);
+				
+				
 					
 					
 			});

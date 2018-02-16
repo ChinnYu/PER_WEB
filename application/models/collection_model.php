@@ -54,5 +54,16 @@
 			return $bool;
 		}
 		
+		public function getCollectionname($data){
+			$res=$this->db->where(array('user_Id'=>$data['user_Id'],'collection_Tag'=>$data['collection_Tag'],'collection_Name'=>$data['collection_Name']))->get('collection');
+			if($res->num_rows() >0){
+				return $res->result_array();
+			}
+			//return $res->result_array();
+			else{
+				return FALSE;
+			}
+		}
+		
 	}
 	

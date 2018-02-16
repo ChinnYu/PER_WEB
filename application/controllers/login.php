@@ -35,7 +35,7 @@
 			$this->form_validation->set_rules('cap','驗證碼','required');
 			$bool=$this->form_validation->run();
 			if($bool){
-				var_dump('yes');
+				//var_dump('yes');
 				$this->load->model('User_model','user');
 				$res=$this->user->checkHim($user_pass);
 				//if($res==){}
@@ -138,10 +138,13 @@
 				
 			} */
 			//$this->load->view('user/showusers');
+			//var_dump($user_pass);
 		}
-		
-		
-		
+		public function logout(){
+			$this->load->library('session');
+			unset($_SESSION['user']);
+			header("Location: ./");
+		}
 		/* public function getseinfo(){
 			$this->load->library('session');
 			//取CI session中的數據

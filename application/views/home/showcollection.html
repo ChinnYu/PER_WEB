@@ -144,7 +144,6 @@
 				<li class="breadcrumb-item active">home</li>
 			</ol>
 			
-			
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
@@ -152,57 +151,73 @@
 						紀錄之資料
 						</div>
 						<div class="card-body">
+							<div id="showbutton" class="row"  style="margin-left: 12px;margin-top: 12px; display:none;" >
+								<div class="col-md-12">
+									<button id="button_show"type="button" class="btn btn-info btn-lg btn-block" >顯示表單</button>
+								</div>
+							</div>
 							<div class="row"  style="margin-left: 12px;margin-top: 12px;">
-								<div class="col-6">
-									<div id="accordio" role="tablist" aria-multiselectable="true">
-										<div class="card" id="cardbox">
-											<div class="card-header " role="tab" id="headingOne">
-												<h5 class="mb-2">
-													<a data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
-													PHP
-													</a>
-												</h5>
-											</div>
+								<div id ="showtree" class="col-md-2">
+									<div id="jstree1" style="width:200px;background:#FFDEDE;"></div>
+									<!-- <div id="accordio" role="tablist" aria-multiselectable="true"> -->
+										<!-- <div class="card" id="cardbox"> -->
+											<!-- <div class="card-header " role="tab" id="headingOne"> -->
+												<!-- <h5 class="mb-2"> -->
+													<!-- <a data-toggle="collapse" href="#collapse1" aria-expanded="true" aria-controls="collapse1"> -->
+													<!-- PHP -->
+													<!-- </a> -->
+												<!-- </h5> -->
+											<!-- </div> -->
 
-											<div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-												<div class="card-body">
-													<div class="item">
-														<a data-toggle="collapse" data-parent="#headingOne" href="#exampleAccordion1" aria-expanded="false" aria-controls="exampleAccordion1" onmousedown="getcontent(this.innerHTML);">
-														Toggle item
-														</a>
-														<div id="exampleAccordion1" class="collapse" role="tabpanel" >
-															<p class="mb-3" id="test" >
-															123
-															</p>
-														</div>
-													</div>
-													<div class="item">
-														<a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion2" aria-expanded="false" aria-controls="exampleAccordion2">
-														Toggle item 2
-														</a>
-														<div id="exampleAccordion2" class="collapse" role="tabpanel">
-															<p class="mb-3">
-															555
-															</p>
-														</div>
-													</div>
-												</div>
-											</div>
+											<!-- <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="headingOne"> -->
+												<!-- <div class="card-body"> -->
+													<!-- <div id="SimpleJSTree"></div> -->
+													<!-- <div class="item"> -->
+														<!-- <a data-toggle="collapse" data-parent="#headingOne" href="#exampleAccordion1" aria-expanded="false" aria-controls="exampleAccordion1" onmousedown="getcontent(this.innerHTML);"> -->
+														<!-- Toggle item -->
+														<!-- </a> -->
+														<!-- <div id="exampleAccordion1" class="collapse" role="tabpanel" > -->
+															<!-- <p class="mb-3" id="test" > -->
+															<!-- 123 -->
+															<!-- </p> -->
+														<!-- </div> -->
+													<!-- </div> -->
+													<!-- <div class="item"> -->
+														<!-- <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion2" aria-expanded="false" aria-controls="exampleAccordion2"> -->
+														<!-- Toggle item 2 -->
+														<!-- </a> -->
+														<!-- <div id="exampleAccordion2" class="collapse" role="tabpanel"> -->
+															<!-- <p class="mb-3"> -->
+															<!-- 555 -->
+															<!-- </p> -->
+														<!-- </div> -->
+													<!-- </div> -->
+												<!-- </div> -->
+											<!-- </div> -->
 											
-											<div class="card-header " role="tab" id="heading2">
-												<h5 class="mb-2">
-													<a data-toggle="collapse" href="#collapse2" aria-expanded="true" aria-controls="collapseOne">
-													PHP
-													</a>
-												</h5>
-											</div>
+											<!-- <div class="card-header " role="tab" id="heading2"> -->
+												<!-- <h5 class="mb-2"> -->
+													<!-- <a data-toggle="collapse" href="#collapse2" aria-expanded="true" aria-controls="collapseOne"> -->
+													<!-- PHP -->
+													<!-- </a> -->
+												<!-- </h5> -->
+											<!-- </div> -->
 
-											<div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2">
+											<!-- <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2"> -->
 												
-											</div>
+											<!-- </div> -->
 											
-										</div>
+										<!-- </div> -->
+									<!-- </div> -->
+								</div>
+								<div class="col-md-2" id="showtopic" style="display:none;">
+									<div class="alert alert-info" id="showtopic_in" role="alert">
+										
 									</div>
+								</div>
+								<input type="hidden" id="showtreeactive" value="0">
+								<div class="col-md-8">
+									<textarea class="form-control"  id="collection_get" name="collection_get"></textarea>
 								</div>
 							</div>
 						</div>
@@ -233,10 +248,10 @@
 					<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-body">確定登出了嗎!!! 不在留一下嗎~</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="./logout">Logout</a>
 				</div>
 			</div>
 		  </div>
@@ -249,6 +264,7 @@
 		<!-- Custom scripts for all pages-->
 		<script src="./resource/js/sb-admin.min.js"></script>
 		<script src="./resource/dist/jstree.min.js"></script>
+		<script src="./resource/ckeditor/ckeditor.js"></script>
 	</div>
 	<script type="text/JavaScript">
 		<!-- function getcontent(x){ -->
@@ -259,10 +275,12 @@
 			<!-- //alert(123); -->
 			<!-- document.getElementById('test').innerHTML=x; -->
 		<!-- }; -->
+		CKEDITOR.replace( 'collection_get', {height: 300 });
 	
-	
-	
+		var id_num=-1;//計算id 到第幾
 		var b;
+		var jj;
+		var checkarray=[];
 		$.ajax({
 			type : "POST",
 			url : "collection/getcollectiontag",
@@ -271,33 +289,155 @@
 			success : function(res){
 				var a=atob(res);
 				a=JSON.parse(a);
-				b=a;
-				//<option value="+b+">"+res[i]['course_Name']+"</option>;
+				//b=a;
 				var option="";
-				<!-- for(var key in a){ -->
-					<!-- var num=key+1; -->
-					<!-- option=option+"<option value="+num+">"+a[key]+"</option>" -->
-				<!-- } -->
+				function Papatree(id,parent,text) {
+					this.id = id;
+					this.parent = parent;
+					this.text = text;
+				}
+				//var papatreeObject = new Papatree(20,"",58);
+				var arrayList=[];
+				//alert(jj);
 				a.forEach(function(item,index,a){
-					var num=index;
-					<!-- '<div class="card-header " role="tab" id="heading'+變數+'"><h5 class="mb-2"><a data-toggle="collapse" href="#collapse'+變數+'" aria-expanded="true" aria-controls="collapse'+變數+'">'+主題+'</a></h5></div> -->
-<!-- '<div id="collapse'+變數+'" class="collapse" role="tabpanel" aria-labelledby="heading'+變數+'"><div class="card-body"></div></div>' -->
-					option=option+'<div class="card-header " role="tab" id="heading'+num+'"><h5 class="mb-2"><a data-toggle="collapse" href="#collapse'+num+'" aria-expanded="true" aria-controls="collapse'+num+'">'+item+'</a></h5></div><div id="collapse'+num+'" class="collapse" role="tabpanel" aria-labelledby="heading'+num+'"><div class="card-body"></div></div>';
-
+					index = index.toString();
+					checkarray.push(0);
+					id_num++;
+					//alert(index);
+					var papatreeObject = new Papatree(index,"#",item);
+					//option=option+'<div class="card-header " role="tab" id="heading'+num+'"><h5 class="mb-2"><a data-toggle="collapse" href="#collapse'+num+'" aria-expanded="true" aria-controls="collapse'+num+'">'+item+'</a></h5></div><div id="collapse'+num+'" class="collapse" role="tabpanel" aria-labelledby="heading'+num+'"><div class="card-body"></div></div>';
+					arrayList.push(papatreeObject);
 				});
-				document.getElementById("cardbox").innerHTML=option;
-				//alert(option);
+				b=JSON.stringify(arrayList);
+				//alert(jj);
+				//jj=JSON.parse(jj);
+				//alert(jj);
+				$('#jstree1').jstree({  
+                "core":{  
+                    "data":arrayList,//放array
+					"themes" : {  
+                        "variant" : "large",//加大  
+                        "ellipsis" : true //文字多時省略  
+                    },  
+                    "check_callback" : true  
+                },  
+                "plugins" : [ "wholerow","themes"]  
+				});
+				
 			},
 			error : function(jqXHR){
 				alert("發生錯誤 : "+jqXHR.status);
 			}
 		});
+		var testi;
+		$(function(){//prevent repeatedly get data 0:代表未按 1:代表按過 2:代表是child 呼叫拿紀錄的東西
+			$('#jstree1').on('select_node.jstree',function(event,data){
+				//var cc=JSON.stringify(data.node);
+				//alert(cc);
+				if(checkarray[data.node['id']]==0){
+					checkarray[data.node['id']]=1;
+					$.ajax({
+						type : "POST",
+						url : "collection/getnameofcollection",
+						dataType : "text",
+						data : {
+							tag : data.node['text'],
+						},
+						success : function(res){
+							var a=atob(res);
+							//alert(a);
+							if(a!='FALSE'){
+								a=JSON.parse(a);
+								function Papatree(id,parent,text) {
+									this.id = id;
+									this.parent = parent;
+									this.text = text;
+								}
+								//var temp=JSON.parse(b);
+								var arrayList=[];
+								var temp=JSON.parse(b);
+								a.forEach(function(item,index,a){
+									//index = index.toString();
+									checkarray.push(2);
+									id_num++;
+									//alert(id_num);
+									<!-- alert(data.node['text']); -->
+									<!-- var papatreeObject = new Papatree(id_num,data.node['id'],item); -->
+									<!-- temp.push(papatreeObject); -->
+									//arrayList.push(papatreeObject);
+									
+									$('#jstree1').jstree().create_node(data.node['id'], {
+										"id": id_num,
+										"text": item,
+									}, 
+									"last", function() {
+										//alert("Child created");
+									}	
+									);
+									
+								});
+							}
+							else{
+								alert('沒東西,請新增');
+							}
+							
+							
+							
+						},
+						error : function(jqXHR){
+							alert("發生錯誤 : "+jqXHR.status);
+						}
+						
+					});
+				}
+				else if(checkarray[data.node['id']]==2){
+					
+					//loMainSelected=$('#tree').jstree('get_selected').attr('id')
+					//alert(data.node['id']);
+					//alert(data.instance.get_node(data.node.parent).text);
+					$.ajax({
+						type : "POST",
+						url : "collection/getcollection",
+						dataType : "json",
+						data : {
+							tag : data.instance.get_node(data.node.parent).text,
+							coname :	data.node['text'],
+						},
+						success : function(res){
+							if(res!=false){
+								CKEDITOR.instances['collection_get'].setData(res);
+								document.getElementById("showtree").style.display='none';
+								document.getElementById("showbutton").style.display='block';
+								document.getElementById("showtopic").style.display='block';
+								document.getElementById("showtopic_in").innerHTML=data.node['text'];
+								document.getElementById("button_show").innerHTML='顯示表單';
+							}else{
+								alert('沒有東西喔');
+							}
+						},
+						error : function(jqXHR){
+							alert("發生錯誤 : "+jqXHR.status);
+						}
+					});
+				}
+				
+				
+				//alert(data.node['text']);
+			})
+		});
 		
-		$('#topicbox').change(function(){
-			var selecteditem = $('#topicbox').val();
-			var num = parseInt(selecteditem)-1;
-			
-			
+		
+		
+		$('#showbutton').click(function(){
+			if(document.getElementById("showtreeactive").value==0){//0代表目前樹是關的
+				document.getElementById("showtree").style.display='block';
+				document.getElementById("showtreeactive").value=1;
+				document.getElementById("button_show").innerHTML='隱藏表單';
+			}else{
+				document.getElementById("showtree").style.display='none';
+				document.getElementById("showtreeactive").value=0;
+				document.getElementById("button_show").innerHTML='顯示表單';
+			}
 		});
 		var jj;
 		$(document).ready(function(){
